@@ -1,0 +1,21 @@
+version: "3.8"
+
+
+services:
+  todo:
+    container_name: todo-task
+    image: app-todo:v1
+
+    ports:
+      - "7000:5000"
+
+    volumes:
+      - ./todos.json:/app/todos.json
+
+    networks:
+      - skola-net
+    restart: unless-stopped
+
+networks:
+  skola-net:
+    driver : bridge
